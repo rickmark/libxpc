@@ -2,9 +2,19 @@
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
 
+mod remote_xpc;
+mod connection;
+
 use libc::{size_t, uuid_t};
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+
+
+type xpc_handler_t = fn(object: xpc_object_t);
+
+type xpc_activity_handler_t = fn(activity: xpc_activity_t);
+
+type xpc_finalizer_t = fn (&xpc_object_t);
 
 type xpc_msg_id_t = u64;
 type xpc_size_t = u64;
@@ -135,6 +145,8 @@ struct xpc_file_transfer_t {
     msg_id: xpc_msg_id_t,
     data: xpc_compound_t
 }
+
+struct xpc_activity_t {}
 
 union xpc_object_t {
     uint64: xpc_uint64_t,

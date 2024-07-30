@@ -1,0 +1,1 @@
+struct xpc_connection_t {}
