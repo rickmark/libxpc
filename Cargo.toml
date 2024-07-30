@@ -1,0 +1,12 @@
+[package]
+name = "libxpc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+libc = "0.2.155"
+quinn = "0.11.2"
+
+[build-dependencies]
+bindgen = "0.69.4"
+pkg-config = "0.3.30"
